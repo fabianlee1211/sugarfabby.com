@@ -98,21 +98,18 @@ const IntroSection = () => {
   `);
   const { mode } = useTheme();
   const { author, email, description } = data.site.siteMetadata;
-  const { url: resumeUrl } = data.contentfulAsset.file;
   return (
     <StyledContainer isTopSection>
       <Headline>
         <Heading size="h1" style={{ margin: '0 0 10px' }}>
           {author}
         </Heading>
-        <Paragraph style={{ fontSize: '18px' }}>{description}</Paragraph>
+        <Paragraph style={{ fontSize: '18px', marginBottom: '25px' }}>
+          {description}
+        </Paragraph>
         <Buttons justifyContent="center">
-          <Button link={`mailto:${email}`} target="_self">
+          <Button isFill link={`mailto:${email}`} target="_self">
             Say Hello
-          </Button>
-          <Box mr="10px" />
-          <Button link={resumeUrl} isFill>
-            View Resume
           </Button>
         </Buttons>
       </Headline>

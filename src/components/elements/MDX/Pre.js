@@ -19,7 +19,7 @@ const StyledPre = styled.pre`
 
 const Pre = (props) => {
   return (
-    <div style={{ margin: '2.75rem -20px' }}>
+    <div style={{ margin: '2.5rem -20px' }}>
       <StyledPre {...props} />
     </div>
   );

@@ -135,10 +135,12 @@ const Post = ({ data: { mdx }, pageContext }) => {
         {banner && (
           <ImageContainer flexDirection="column" mb="30px">
             <Img fluid={banner.childImageSharp.fluid} alt="post-banner" />
-            <Credit size="small">
-              Photo By&nbsp;
-              <Link href={bannerLink}>{bannerCredit}</Link>
-            </Credit>
+            {bannerCredit && (
+              <Credit size="small">
+                Photo By&nbsp;
+                <Link href={bannerLink}>{bannerCredit}</Link>
+              </Credit>
+            )}
           </ImageContainer>
         )}
         <MDXRenderer>{body}</MDXRenderer>

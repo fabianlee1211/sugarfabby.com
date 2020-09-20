@@ -1,0 +1,73 @@
+---
+slug: 6-tips-on-building-your-gatsby-website
+title: '6 Tips on Building your Gatsby Website'
+date: '2020-09-20'
+author: Fabian Lee
+description: A few tips that I find useful when building my own Gatsby site.
+banner: './images/banner.png'
+category: Coding
+published: true
+---
+
+#### From Novice to Intermediate
+
+I've built 2 personal website up to this date. The first one was how I taught myself the basics of web development 4 years ago. It was a simple Bootstrap website and far from being presentable. I had a separated Ghost blog website as well but it was a mess when I tried to customize it. After years of solidifying my skills, I went to search for a better alternative which is fast, customizable and easy to maintain. Thereon, I found [Gatsby](https://www.gatsbyjs.com/) and built my second personal website. The entire experience is truly remarkable.
+
+In the process of learning how to use Gatsby, I took reference from [Wes Bos](https://wesbos.com/) and [Kent C. Dodds'](https://kentcdodds.com/) Gatsby sites. It’s amazing to see how they utilize Gatsby to its core.
+
+Here are some of the tips that I've find useful if you wish to start or improve your Gatsby project.
+
+#### 1. SEO with React Helmet
+
+You can build a reusable SEO component and override the default metadata with props in different pages. I have a default SEO component which has the basic HTML header, Facebook OpenGraph and Twitter metadata that represent the general pages. I would then override them with Markdown frontmatter data in my blog post pages so that they can indexed and shared individually.
+
+#### 2. Wrap your Layout in `gatsby-browser` and `gatsby-ssr`
+
+If you have general page design that you wish to apply to all of your pages, you can create a Layout component and add it to `gatsby-browser` and `gatsby-ssr` files like this:
+
+```jsx
+exports.wrapPageElement = ({ element, props }) => (
+   <Layout {...props}>{element}</Layout>
+);
+```
+
+Using the `wrapPageElement` API, Gatsby would automatically apply the Layout when it’s building your pages. It’s also worth mentioning that Layout will stay mounted. I had ran into issues with unmounting states when I was playing with animations and this can be solved by using this method. It’s still completely fine to apply Layout to each page yourself if your content are static.
+
+#### 3. Tap into the superpowers of Gatsby APIs
+
+It took me quite some time to understand the power of Gatsby APIs. The most common use cases would be for automating some building process. For example, I can query all the markdown files in `createPagesAPI` and call the `createPage` action to build the pages with the path, template and add any context data that I want. This is how I generated all my blog posts. Essentially, you can have different page templates to build your Podcasts, Workshops, Book Reviews or whatever pages you want.
+
+`onCreateNode` is also another helpful API that adds extra GraphQL node fields. For example, I’ve added a `editLink` field which is the post edit link in GitHub and I can query it inside my blog post template page.
+
+You can explore all the APIs [here](https://www.gatsbyjs.com/docs/api-reference/) and find a use case for yourself.
+
+
+#### 4. Use Gatsby Image plugin
+
+At the very beginning, I was simply using `img` tags to for all my images. It’s not a good solution in terms of responsiveness. It would also be time-consuming for me to create images with different sizes and use them with `picture` tags.
+
+This is where `gatsby-image` comes in place. It does all of the aforementioned process and even provides lazy loading. You can also choose between blurring and SVG tracing effect to add a touch of progressive loading user experience. It works with different CMS plugins that provides images as well.
+
+#### 5. You might not need to integrate a CMS
+
+This depends on the nature of your website obviously. If someone else is managing the content, integrating with a CMS like Contentful, Wordpress or Drupal would be the best.
+
+If you are simply building and managing your own website, you don’t necessary need a CMS. Sourcing from your local files is simpler than you think with community plugins like `gatsby-source-filesystem`. For example, I’m writing my blog posts in MDX locally. Publishing and editing are all done by pushing commits to my repository. This way you’ll have full control without relying on other services to serve the content.
+
+#### 6. Activate incremental build if you’re hosting on Netlify
+
+Deploying a Gatsby website to Netlify could take up a lot of time since it needs to generate all of pages one by one. The build time goes even higher if you have a lot of images.
+
+I recommend following this [guide](https://www.netlify.com/blog/2020/04/23/enable-gatsby-incremental-builds-on-netlify/) to setup incremental build in Netlify. It uses the Gatsby cache plugin to help persist cache between builds and only rebuild files that have been changed. This significantly improves the build time of your website.
+
+<br />
+
+#### That's it 👍
+Feel free to checkout my website’s repo to see these tips in action and hopefully you’ll find them useful. I’ll happy to help if you have any questions.
+
+
+
+
+
+
+
