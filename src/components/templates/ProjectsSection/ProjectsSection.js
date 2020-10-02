@@ -20,11 +20,11 @@ const ProjectsGrid = styled.div`
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
   }
 
-  @media screen and (min-width: 1128px) {
+  @media screen and (min-width: 998px) {
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 20px;
   }
 `;
 

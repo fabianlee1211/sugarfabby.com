@@ -47,7 +47,7 @@ export const PostItem = ({
         <Text
           style={{
             color: 'var(--color-text-secondary)',
-            marginBottom: '5px',
+            marginBottom: '10px',
           }}
         >
           {description}

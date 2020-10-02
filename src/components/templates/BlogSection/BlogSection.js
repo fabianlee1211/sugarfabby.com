@@ -30,7 +30,7 @@ const PostWrapper = styled(Box)`
   }
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: 25% 1fr;
+    grid-template-columns: 30% 1fr;
     .gatsby-image-wrapper {
       border-radius: 10px 0 0 10px;
     }
@@ -117,7 +117,7 @@ const BlogSection = () => {
     <BlogContainer>
       {posts.map((p, i) => {
         return (
-          <PostWrapper key={i} mb="30px">
+          <PostWrapper key={i} mb="20px">
             <Img
               style={{
                 width: '100%',
