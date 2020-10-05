@@ -1,6 +1,7 @@
 import Box from '@components/elements/Box/Box';
 import Button from '@components/elements/Button/Button';
 import Container from '@components/elements/Container/Container';
+import { useGroupedPosts } from '@hooks/useGroupedPosts';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
@@ -13,7 +14,7 @@ const BlogContainer = styled(Container)`
   > div {
     text-align: left;
     padding: 70px 20px;
-    max-width: 992px;
+    max-width: 1120px;
   }
 `;
 
@@ -27,17 +28,17 @@ const PostWrapper = styled(Box)`
 
   .gatsby-image-wrapper {
     border-radius: 10px 10px 0 0;
+    margin: 0;
   }
 
   @media screen and (min-width: 768px) {
     grid-template-columns: 30% 1fr;
     .gatsby-image-wrapper {
       border-radius: 10px 0 0 10px;
+      margin-right: 5px;
     }
   }
 `;
-
-const PAGINATION_SIZE = 5;
 
 const BlogSection = () => {
   const data = useStaticQuery(graphql`
@@ -74,44 +75,7 @@ const BlogSection = () => {
     }
   `);
 
-  const [groupedPosts, setGroupedPosts] = React.useState([]);
-  // Prevent a height changing flash at first load
-  const [posts, setPosts] = React.useState(
-    data.blog.nodes.slice(0, PAGINATION_SIZE),
-  );
-  const [offset, setOffset] = React.useState(0);
-
-  // Set the first group of posts to show
-  React.useEffect(() => {
-    if (groupedPosts.length && offset === 0) {
-      setPosts(groupedPosts[offset]);
-      setOffset((prev) => prev + 1);
-    }
-  }, [groupedPosts, offset]);
-
-  // Group posts by pagination size
-  React.useEffect(() => {
-    let start = 0;
-    let groups = Array.from(
-      Array(Math.ceil(data.blog.nodes.length / PAGINATION_SIZE)),
-    );
-    groups = groups.map(() => {
-      const group = data.blog.nodes.slice(start, start + PAGINATION_SIZE);
-      start += PAGINATION_SIZE;
-      return group;
-    });
-
-    setGroupedPosts(groups);
-  }, [data.blog.nodes]);
-
-  const appendPosts = () => {
-    if (groupedPosts[offset] && groupedPosts[offset].length) {
-      setPosts((prev) => [...prev, ...groupedPosts[offset]]);
-      setOffset((prev) => prev + 1);
-    }
-  };
-
-  const hasMorePosts = offset !== groupedPosts.length;
+  const { posts, appendPosts, hasMorePosts } = useGroupedPosts(data.blog.nodes);
 
   return (
     <BlogContainer>
@@ -119,12 +83,10 @@ const BlogSection = () => {
         return (
           <PostWrapper key={i} mb="20px">
             <Img
-              style={{
-                width: '100%',
-                marginRight: '20px',
-                flex: 1,
+              fluid={{
+                ...p.frontmatter.banner.childImageSharp.fluid,
+                aspectRatio: 16 / 9,
               }}
-              fluid={p.frontmatter.banner.childImageSharp.fluid}
               alt="post-banner"
             />
             <PostItem

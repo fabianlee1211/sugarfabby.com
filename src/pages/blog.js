@@ -11,7 +11,7 @@ const StyledContainer = styled(Container)`
   > div {
     padding: 70px 20px 40px;
     text-align: left;
-    max-width: 992px;
+    max-width: 1120px;
   }
 `;
 

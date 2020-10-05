@@ -83,26 +83,24 @@ const SummarySection = () => {
 
   return (
     <StyledContainer>
-      <div style={{ maxWidth: '750px' }}>
-        <Header>Latest Posts</Header>
-        {posts.map((p) => {
-          return (
-            <PostItem
-              key={p.id}
-              {...p.frontmatter}
-              link={p.fields.slug}
-              timeToRead={p.timeToRead}
-            />
-          );
-        })}
-        <ViewAll to="/blog">View All</ViewAll>
-        <Divider />
-        <Header>Latest Projects</Header>
-        {projects.map((p) => {
-          return <ProjectItem key={p.id} {...p} />;
-        })}
-        <ViewAll to="/projects">View All</ViewAll>
-      </div>
+      <Header>Latest Posts</Header>
+      {posts.map((p) => {
+        return (
+          <PostItem
+            key={p.id}
+            {...p.frontmatter}
+            link={p.fields.slug}
+            timeToRead={p.timeToRead}
+          />
+        );
+      })}
+      <ViewAll to="/blog">View All</ViewAll>
+      <Divider />
+      <Header>Latest Projects</Header>
+      {projects.map((p) => {
+        return <ProjectItem key={p.id} {...p} />;
+      })}
+      <ViewAll to="/projects">View All</ViewAll>
     </StyledContainer>
   );
 };
