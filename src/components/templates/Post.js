@@ -6,7 +6,6 @@ import SEO from '@components/elements/SEO/SEO';
 import Heading from '@components/elements/Text/Heading';
 import Text from '@components/elements/Text/Text';
 import Footer from '@components/modules/Footer/Footer';
-import Navbar from '@components/modules/Navbar/Navbar';
 import { graphql, Link as NavLink } from 'gatsby';
 import Img from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -115,7 +114,6 @@ const Post = ({ data: { mdx }, pageContext }) => {
         metaImage={banner.childImageSharp.fluid.src}
         isBlogPost
       />
-      <Navbar />
       <PostContainer isTopSection>
         <Box flexDirection="column" mb="30px">
           <Box>

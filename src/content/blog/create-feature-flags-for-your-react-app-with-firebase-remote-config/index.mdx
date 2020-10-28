@@ -7,6 +7,11 @@ description: A simple way to switch on and off your application features.
 banner: './images/banner.png'
 published: true
 category: Coding
+keywords:
+  - react
+  - javascript
+  - coding
+  - firebase
 ---
 
 **Feature flags** (toggles / switches), as the name suggested, are for switching on and off certain features in your application. You can add feature flags to perform A/B testing by switching on beta features for some users. You can use them as a fail-safe switch in case something goes wrong in production. Or you can use them to hide your work-in-progress features.
@@ -135,15 +140,15 @@ Here's where `semver` helps us determine the boolean state of a flag. The `semve
 
 **To illustrate how it works,**
 
-We would retrieve our app version from our environment variables.
+- We would retrieve our app version from our environment variables.
 
 > Simply add `REACT_APP_VERSION=$npm_package_version` to your `.env` file in this example which would retrieve the version number from your `package.json`.
 
-We have 1 remote flag which is `['someAwesomeFeatureEnabled', '^1.0.0']`.
+- We have 1 remote flag which is `['someAwesomeFeatureEnabled', '^1.0.0']`.
 
-Assuming our app version is 1.0.1 , `semverSatisfies('1.0.1', '^1.0.0')` would return true. 
+- Assuming our app version is 1.0.1 , `semverSatisfies('1.0.1', '^1.0.0')` would return true. 
 
-And finally we call `setFlags({ someAwesomeFeatureEnabled: true })`.
+- And finally we call `setFlags({ someAwesomeFeatureEnabled: true })`.
 
 #### 4. Wrap your App with FlagsProvider
 

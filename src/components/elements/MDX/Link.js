@@ -12,8 +12,15 @@ const Link = styled.a`
   }
 `;
 
-export default ({ children, ...props }) => (
-  <Link target="_blank" rel="noopener noreferrer" {...props}>
-    {children}
-  </Link>
-);
+export default ({ children, ...props }) => {
+  // Header anchor links
+  if (props.className && props.className.includes('anchor')) {
+    return <Link {...props}>{children}</Link>;
+  }
+
+  return (
+    <Link target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+    </Link>
+  );
+};

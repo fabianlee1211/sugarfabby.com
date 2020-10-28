@@ -45,6 +45,7 @@ const StyledHeading = styled.h1`
   margin: 2.75rem 0 1.05rem;
   line-height: ${({ size }) => getLineHeight(size)};
   letter-spacing: -0.01rem;
+  scroll-margin-top: 3em;
   a {
     color: var(--color-primary);
     font-weight: inherit;
