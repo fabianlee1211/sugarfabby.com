@@ -36,7 +36,7 @@
     "gatsby-remark-prismjs": "^3.5.11",
     "gatsby-source-contentful": "^2.3.37",
     "gatsby-source-filesystem": "^2.3.24",
-    "gatsby-transformer-sharp": "^2.5.7",
+    "gatsby-transformer-sharp": "^2.5.20",
     "prism-theme-night-owl": "^1.4.0",
     "prismjs": "^1.21.0",
     "react": "^16.13.1",
