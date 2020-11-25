@@ -94,6 +94,7 @@ const GlobalStyles = createGlobalStyle`
 
   pre, code {
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    overflow-wrap: break-word;
   }
 
   /* Adjust code highlight line numbers position, depending on the containers' padding */

@@ -15,7 +15,7 @@ function createBlogPages({ posts, actions, blogPath }) {
 
     createPage({
       path: pagePath,
-      component: path.resolve(`./src/components/templates/Post.js`),
+      component: path.resolve(`./src/components/templates/Markdown/Post.js`),
       context: {
         id: node.id,
         prev,

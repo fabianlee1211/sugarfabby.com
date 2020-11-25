@@ -77,7 +77,7 @@ module.exports = {
         extensions: ['.mdx'],
         defaultLayouts: {
           default: require.resolve(
-            './src/components/templates/MarkdownPage.js',
+            './src/components/templates/Markdown/MarkdownPage.js',
           ),
         },
         gatsbyRemarkPlugins: [
