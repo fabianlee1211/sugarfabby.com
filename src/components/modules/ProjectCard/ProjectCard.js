@@ -1,31 +1,9 @@
-import Box from '@components/elements/Box/Box';
-import Button from '@components/elements/Button/Button';
-import Heading from '@components/elements/Text/Heading';
-import Text from '@components/elements/Text/Text';
+import {
+  PrimaryButton,
+  SecondaryButton,
+} from '@components/elements/Button/Button';
 import Img from 'gatsby-image';
 import React from 'react';
-import styled from 'styled-components';
-
-const ProjectContainer = styled(Box)`
-  background: var(--color-background);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-const ContentContainer = styled(Box)`
-  text-align: left;
-`;
-
-const ButtonsContainer = styled(Box)`
-  margin-top: auto;
-  > :first-child {
-    margin-right: 10px;
-  }
-`;
-
-const SkillsUsedText = styled(Text)`
-  color: var(--color-text-secondary);
-`;
 
 const ProjectCard = ({ project }) => {
   const {
@@ -38,41 +16,45 @@ const ProjectCard = ({ project }) => {
   } = project;
 
   return (
-    <ProjectContainer flexDirection="column">
+    <div className="flex flex-col bg-background shadow-lg rounded-lg">
       <Img
+        className="rounded-t-lg"
         objectFit="cover"
         objectPosition="center"
-        fluid={fluid}
+        fluid={{ ...fluid, aspectRatio: 16 / 9 }}
         alt={title}
-        style={{
-          width: '100%',
-          height: '250px',
-          borderRadius: '10px 10px 0px 0px',
-        }}
       />
-      <ContentContainer p="20px" flex={1} flexDirection="column">
-        <Heading size="h5" style={{ margin: 0 }}>
-          {title}
-        </Heading>
-        <Heading size="h6" style={{ margin: '5px 0 15px' }}>
-          {excerpt}
-        </Heading>
-        <Box flexDirection="column" mb="40px">
-          <SkillsUsedText size="small" fontWeight="600">
+      <div className="flex flex-col p-4 space-y-2">
+        <h5 className="text-xl font-bold">{title}</h5>
+        <h6 className="text-md font-medium">{excerpt}</h6>
+        <div className="flex flex-col space-y-1">
+          <p
+            className="text-xs font-semibold tracking-wide"
+            style={{ color: 'var(--color-text-secondary)' }}
+          >
             Skills Used:
-          </SkillsUsedText>
-          <SkillsUsedText size="small">{techUsed.join(', ')}</SkillsUsedText>
-        </Box>
-        <ButtonsContainer justifyContent="center">
-          <Button link={sourceLink} disabled={!sourceLink}>
-            View Source
-          </Button>
-          <Button link={demoLink} disabled={!demoLink} isFill>
-            View Demo
-          </Button>
-        </ButtonsContainer>
-      </ContentContainer>
-    </ProjectContainer>
+          </p>
+          <p
+            className="text-xs tracking-wide"
+            style={{ color: 'var(--color-text-secondary)' }}
+          >
+            {techUsed.join(', ')}
+          </p>
+        </div>
+      </div>
+      <div className="flex justify-center mt-auto mb-4 px-4 space-x-4">
+        <SecondaryButton
+          disabled={!sourceLink}
+          link={sourceLink}
+          className="w-full"
+        >
+          View Source
+        </SecondaryButton>
+        <PrimaryButton disabled={!demoLink} link={demoLink} className="w-full">
+          View Demo
+        </PrimaryButton>
+      </div>
+    </div>
   );
 };
 

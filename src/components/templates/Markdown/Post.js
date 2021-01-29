@@ -1,95 +1,13 @@
-import Box from '@components/elements/Box/Box';
 import Container from '@components/elements/Container/Container';
 import Arrow from '@components/elements/Icon/Arrow';
 import Link from '@components/elements/MDX/Link';
 import SEO from '@components/elements/SEO/SEO';
-import Heading from '@components/elements/Text/Heading';
-import Text from '@components/elements/Text/Text';
 import Footer from '@components/modules/Footer/Footer';
 import { graphql, Link as NavLink } from 'gatsby';
 import Img from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import 'prism-theme-night-owl';
 import React from 'react';
-import styled from 'styled-components';
-
-const PostContainer = styled(Container)`
-  flex: 1 0 auto;
-  > div {
-    max-width: 768px;
-    text-align: left;
-  }
-`;
-
-const Description = styled(Text)`
-  max-width: 90%;
-`;
-
-const Credit = styled(Text)`
-  text-align: center;
-  margin: 10px 0;
-  color: gray;
-`;
-
-const PostCard = styled(Box)`
-  background: var(--color-background-dark);
-  padding: 20px;
-  margin-bottom: 20px;
-  flex-direction: column;
-  border-radius: 10px;
-  flex: 1;
-
-  &#next {
-    margin-right: 0;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-right: 15px;
-    max-width: 357px;
-
-    &#next {
-      margin-left: auto;
-    }
-  }
-`;
-
-const PostLink = styled(NavLink)`
-  color: var(--color-primary);
-
-  :hover {
-    text-decoration: underline;
-  }
-`;
-
-const PostCardContainer = styled(Box)`
-  flex-direction: column;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`;
-
-const Category = styled(Text)`
-  color: var(--color-primary);
-  padding: 0 10px;
-  width: fit-content;
-  background: rgba(79, 172, 254, 0.2);
-  border-radius: 10px;
-  margin-right: 10px;
-`;
-
-const ImageContainer = styled(Box)`
-  > div {
-    border-radius: 0;
-    margin: 0 -20px;
-  }
-
-  @media screen and (min-width: 769px) {
-    > div {
-      border-radius: 10px;
-    }
-  }
-`;
 
 const Post = ({ data: { mdx }, pageContext }) => {
   const { next, prev } = pageContext;
@@ -114,80 +32,89 @@ const Post = ({ data: { mdx }, pageContext }) => {
         metaImage={banner.childImageSharp.fluid.src}
         isBlogPost
       />
-      <PostContainer isTopSection>
-        <Box flexDirection="column" mb="30px">
-          <Box>
-            {category && <Category size="small">{category}</Category>}
-            <Text
-              size="small"
-              style={{ color: 'var(--color-text-secondary)' }}
-            >{`${date} • ${timeToRead} minute read`}</Text>
-          </Box>
-          <Heading size="h2" style={{ marginTop: '10px' }}>
-            {title}
-          </Heading>
-          <Description size="large" fontWeight="200">
-            {description}
-          </Description>
-        </Box>
-        {banner && (
-          <ImageContainer flexDirection="column" mb="30px">
-            <Img fluid={banner.childImageSharp.fluid} alt="post-banner" />
-            {bannerCredit && (
-              <Credit size="small">
-                Photo By&nbsp;
-                <Link href={bannerLink}>{bannerCredit}</Link>
-              </Credit>
+      <Container isBlog className="max-w-screen-md pt-24 pb-12">
+        <article>
+          <div className="flex flex-col mb-10">
+            <div className="flex items-center space-x-2">
+              {category && (
+                <p className="text-xs font-medium px-3 py-1 rounded-xl text-primary bg-blue-500 bg-opacity-20">
+                  {category}
+                </p>
+              )}
+              <p
+                className="text-xs font-medium"
+                style={{ color: 'var(--color-text-secondary)' }}
+              >{`${date} • ${timeToRead} minute read`}</p>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold my-4">{title}</h2>
+            <p className="text-lg md:text-xl font-extralight">{description}</p>
+          </div>
+          {banner && (
+            <div className="flex flex-col mb-10">
+              <Img
+                className="md:rounded-md -mx-4"
+                fluid={banner.childImageSharp.fluid}
+                alt="post-banner"
+              />
+              {bannerCredit && (
+                <p className="text-gray-500 my-3 text-center text-xs tracking-wide">
+                  Photo By&nbsp;
+                  <Link href={bannerLink}>{bannerCredit}</Link>
+                </p>
+              )}
+            </div>
+          )}
+          <MDXRenderer>{body}</MDXRenderer>
+
+          <div className="flex items-end flex-col mt-16 mb-10">
+            <p className="font-bold">Thanks For Reading</p>
+            <div className="mt-1">
+              <p className="text-right">
+                <Link
+                  href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
+                    blogPostUrl,
+                  )}`}
+                >
+                  Discuss on Twitter
+                </Link>
+                <span className="mx-2">{` • `}</span>
+                <Link href={editLink}>Edit Post on GitHub</Link>
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+            {prev && (
+              <div className="flex flex-col bg-background-dark p-6 rounded-lg">
+                <div className="flex items-center">
+                  <Arrow type="left" />
+                  <p>Previous</p>
+                </div>
+                <NavLink
+                  className="font-bold text-primary hover:underline"
+                  to={prev.fields.slug}
+                >
+                  {prev.frontmatter.title}
+                </NavLink>
+              </div>
             )}
-          </ImageContainer>
-        )}
-        <MDXRenderer>{body}</MDXRenderer>
-
-        <Box alignItems="flex-end" flexDirection="column" mt="80px" mb="30px">
-          <Text fontWeight="bold">Thanks For Reading</Text>
-          <Box mt="5px">
-            <Text style={{ margin: 0, textAlign: 'right' }}>
-              <Link
-                href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
-                  blogPostUrl,
-                )}`}
-              >
-                Discuss on Twitter
-              </Link>
-              <span style={{ margin: '0 10px' }}>{` • `}</span>
-              <Link href={editLink}>Edit Post on GitHub</Link>
-            </Text>
-          </Box>
-        </Box>
-
-        <PostCardContainer justifyContent="space-between">
-          {prev && (
-            <PostCard id="prev">
-              <Box alignItems="center">
-                <Arrow type="left" />
-                <Text>Previous</Text>
-              </Box>
-              <PostLink style={{ fontWeight: 'bold' }} to={prev.fields.slug}>
-                {prev.frontmatter.title}
-              </PostLink>
-            </PostCard>
-          )}
-          {next && (
-            <PostCard id="next">
-              <Box alignItems="center" alignSelf="flex-end">
-                <Text>Next</Text>
-                <Arrow />
-              </Box>
-              <PostLink
-                style={{ fontWeight: 'bold', textAlign: 'right' }}
-                to={next.fields.slug}
-              >
-                {next.frontmatter.title}
-              </PostLink>
-            </PostCard>
-          )}
-        </PostCardContainer>
-      </PostContainer>
+            {next && (
+              <div className="flex flex-col bg-background-dark p-6 rounded-lg">
+                <div className="flex items-center self-end">
+                  <p>Next</p>
+                  <Arrow />
+                </div>
+                <NavLink
+                  className="font-bold text-right text-primary hover:underline"
+                  to={next.fields.slug}
+                >
+                  {next.frontmatter.title}
+                </NavLink>
+              </div>
+            )}
+          </div>
+        </article>
+      </Container>
       <Footer />
     </>
   );

@@ -14,7 +14,7 @@ It's easy for you to remember (I hope...)
 - Built with [Gatsby](https://www.gatsbyjs.org/)
 - Managed with [Contentful](https://www.contentful.com/)
 - Hosted with [Netlify](https://www.netlify.com/)
-- Coded with React, GraphQL, Styled Components, MDX
+- Coded with React, GraphQL, Tailwind CSS, MDX
 
 ## 💫 Deployment Status
 

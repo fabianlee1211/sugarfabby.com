@@ -1,16 +1,8 @@
-import Box from '@components/elements/Box/Box';
 import React from 'react';
-import styled from 'styled-components';
-
-const Container = styled(Box)`
-  .loader {
-    stroke: var(--color-text);
-  }
-`;
 
 const Loading = () => {
   return (
-    <Container flex={1} justifyContent="center" alignItems="center">
+    <div className="flex justify-center items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -44,7 +36,7 @@ const Loading = () => {
           ></animateTransform>
         </circle>
       </svg>
-    </Container>
+    </div>
   );
 };
 

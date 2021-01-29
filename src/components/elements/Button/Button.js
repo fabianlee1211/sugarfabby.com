@@ -1,73 +1,82 @@
+import { cleanStyles } from '@lib/utils/utils';
 import React from 'react';
-import styled, { css } from 'styled-components';
 
-const filledStyle = css`
-  background: var(--color-primary);
-  color: var(--color-white);
-  border: 1px solid var(--color-primary);
-  &:hover {
-    border: 1px solid var(--color-hover);
-    background: var(--color-hover);
-  }
-  &:active,
-  &:focus {
-    border: 1px solid var(--color-active);
-    background: var(--color-active);
-  }
-`;
+const baseStyle = 'rounded-md text-sm p-2';
 
-const disabledStyle = css`
-  pointer-events: none;
-  opacity: 0.3;
-`;
+const primaryStyle =
+  'border border-primary bg-primary hover:bg-primary-dark hover:border-primary-dark text-white';
 
-const StyledButton = styled.button`
-  min-width: 125px;
-  border-radius: 20px;
-  padding: 8px 20px;
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  font-family: inherit;
-  line-height: 1.5;
-  font-size: 16px;
-  cursor: pointer;
+const secondaryStyle =
+  'border border-primary text-primary hover:bg-primary-dark hover:border-primary-dark hover:text-white';
 
-  background: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  &:hover {
-    color: var(--color-white);
-    border: 1px solid var(--color-hover);
-    background: var(--color-hover);
-  }
-  &:active,
-  &:focus {
-    color: var(--color-white);
-    border: 1px solid var(--color-active);
-    background: var(--color-active);
-  }
+const disabledStyle = 'pointer-events-none opacity-50';
 
-  ${({ isFill }) => isFill && filledStyle}
-  ${({ disabled }) => disabled && disabledStyle}
-`;
+export const PrimaryButton = ({
+  children,
+  disabled,
+  link,
+  className,
+  target = '_blank',
+  ...props
+}) => {
+  const styles = `
+  ${baseStyle} ${primaryStyle}
+  ${className ? className : ''}
+  ${disabled ? disabledStyle : ''}`;
 
-const Button = ({ children, onClick, isFill, link, disabled, target }) => {
   if (link) {
     return (
-      <a href={link} target={target} rel="nofollow noopener noreferrer">
-        <StyledButton {...{ onClick, isFill, disabled }}>
+      <a
+        href={link}
+        target={target}
+        rel="nofollow noopener noreferrer"
+        className="w-full"
+      >
+        <button className={cleanStyles(styles)} {...props}>
           {children}
-        </StyledButton>
+        </button>
       </a>
     );
   }
 
   return (
-    <StyledButton {...{ onClick, isFill, disabled }}>{children}</StyledButton>
+    <button className={cleanStyles(styles)} {...props}>
+      {children}
+    </button>
   );
 };
 
-Button.defaultProps = {
-  target: '_blank',
-};
+export const SecondaryButton = ({
+  children,
+  disabled,
+  link,
+  target = '_blank',
+  className,
+  ...props
+}) => {
+  const styles = `
+  ${baseStyle} ${secondaryStyle}
+  ${className ? className : ''}
+  ${disabled ? disabledStyle : ''}`;
 
-export default Button;
+  if (link) {
+    return (
+      <a
+        href={link}
+        target={target}
+        rel="nofollow noopener noreferrer"
+        className="w-full"
+      >
+        <button className={cleanStyles(styles)} {...props}>
+          {children}
+        </button>
+      </a>
+    );
+  }
+
+  return (
+    <button className={cleanStyles(styles)} {...props}>
+      {children}
+    </button>
+  );
+};

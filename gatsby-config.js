@@ -13,7 +13,7 @@ module.exports = {
     author: 'Fabian Lee',
     email: 'chleefabian@gmail.com',
     description:
-      'Software Engineer from Hong Kong with focus on Front-end Development and Human-centered Design.',
+      'Full Stack Software Engineer from Hong Kong with focus on Front-end Development and Human-centered Design.',
     siteUrl,
     socialMedia: [
       { link: 'https://github.com/fabianlee1211', platform: 'github' },
@@ -31,12 +31,12 @@ module.exports = {
     ],
   },
   plugins: [
+    'gatsby-plugin-postcss',
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {

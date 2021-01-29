@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import React from 'react';
 
-const Code = styled.code`
-  background: var(--color-background-code);
-  color: #addb67;
-  border-radius: 4px;
-  padding: 4px 8px;
-  font-size: 0.9em;
-`;
+const Code = ({ children }) => {
+  return (
+    <code className="text-code text-sm py-1 px-2 rounded-md bg-dark-dark">
+      {children}
+    </code>
+  );
+};
 
 export default Code;

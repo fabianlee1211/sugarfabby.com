@@ -1,27 +1,18 @@
 import arrow from '@assets/images/next.svg';
+import { cleanStyles } from '@lib/utils/utils';
 import React from 'react';
-import styled, { css } from 'styled-components';
 
-const StyledSpan = styled.span`
-  width: 15px;
-  height: 15px;
-  display: block;
-  background-color: var(--color-text);
-  ${({ type }) =>
-    type === 'left'
-      ? css`
-          transform: rotate(180deg);
-          margin-right: 5px;
-        `
-      : css`
-          margin-left: 5px;
-        `}
-`;
+const baseStyle = 'w-5 h-5 block bg-black dark:bg-white';
+const leftStyle = 'transform rotate-180 mr-2';
+const rightStyle = 'ml-2';
 
 const Arrow = ({ type }) => {
+  const styles = `${baseStyle} ${type === 'left' ? leftStyle : rightStyle}`;
+
   return (
-    <StyledSpan
+    <span
       type={type}
+      className={cleanStyles(styles)}
       style={{
         mask: `url(${arrow})`,
         maskSize: 'cover',

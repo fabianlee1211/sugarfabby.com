@@ -1,22 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const StyledSection = styled.section`
-  background: var(--color-background);
-  ${({ isTopSection }) => isTopSection && `padding-top: 100px`}
-`;
+const defaultStyle = 'container mx-auto px-4 lg:px-24';
+const blogStyle = 'container mx-auto px-4 lg:px-8';
 
-const Wrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 50px 20px 70px;
-  text-align: center;
-`;
-
-const Container = ({ children, ...props }) => (
-  <StyledSection {...props}>
-    <Wrapper>{children}</Wrapper>
-  </StyledSection>
+const Container = ({ children, className, outerClassName, isBlog = false }) => (
+  <section
+    className={
+      outerClassName ? `bg-background ${outerClassName}` : `bg-background`
+    }
+  >
+    <div
+      className={
+        className
+          ? `${isBlog ? blogStyle : defaultStyle} ${className}`
+          : `${isBlog ? blogStyle : defaultStyle}`
+      }
+    >
+      {children}
+    </div>
+  </section>
 );
 
 export default Container;

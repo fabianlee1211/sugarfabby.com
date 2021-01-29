@@ -1,26 +1,6 @@
-import Box from '@components/elements/Box/Box';
 import Link from '@components/elements/MDX/Link';
-import Heading from '@components/elements/Text/Heading';
-import Text from '@components/elements/Text/Text';
 import { Link as NavLink } from 'gatsby';
 import React from 'react';
-import styled from 'styled-components';
-
-const Title = styled(Heading)`
-  width: fit-content;
-  :hover {
-    color: var(--color-primary);
-  }
-`;
-
-const Category = styled(Text)`
-  color: var(--color-primary);
-  padding: 0 10px;
-  width: fit-content;
-  background: rgba(79, 172, 254, 0.2);
-  border-radius: 10px;
-  margin-bottom: 5px;
-`;
 
 export const PostItem = ({
   category,
@@ -32,29 +12,27 @@ export const PostItem = ({
   ...props
 }) => {
   return (
-    <Box mb="40px" {...props}>
-      <Box flexDirection="column">
+    <div {...props}>
+      <div className="flex flex-col">
         {category && (
-          <Category size="small" fontWeight="500">
+          <p className="text-xs font-medium px-3 leading-relaxed rounded-full text-primary bg-blue-500 bg-opacity-20 w-max mb-2">
             {category}
-          </Category>
+          </p>
         )}
         <NavLink to={link}>
-          <Title size="h5" style={{ margin: 0 }}>
-            {title}
-          </Title>
+          <h5 className="text-xl font-bold hover:text-primary mb-1">{title}</h5>
         </NavLink>
-        <Text
+        <p
+          className="mb-2"
           style={{
             color: 'var(--color-text-secondary)',
-            marginBottom: '8px',
           }}
         >
           {description}
-        </Text>
-        <Text size="small">{`${date} • ${timeToRead} minute read`}</Text>
-      </Box>
-    </Box>
+        </p>
+        <p className="text-xs tracking-wide">{`${date} • ${timeToRead} minute read`}</p>
+      </div>
+    </div>
   );
 };
 
@@ -66,26 +44,24 @@ export const ProjectItem = ({
   sourceLink,
 }) => {
   return (
-    <Box mb="30px">
-      <Box flexDirection="column">
-        <Link
-          style={{ color: 'var(--color-text)', textDecoration: 'none' }}
-          href={demoLink || sourceLink}
-        >
-          <Title size="h5" style={{ margin: 0 }}>
-            {title}
-          </Title>
-        </Link>
-        <Text
-          style={{
-            color: 'var(--color-text-secondary)',
-            marginBottom: '5px',
-          }}
-        >
-          {description.excerpt}
-        </Text>
-        <Text size="small">{new Date(publishedDate).getFullYear()}</Text>
-      </Box>
-    </Box>
+    <div className="flex flex-col">
+      <Link
+        style={{ color: 'var(--color-text)', textDecoration: 'none' }}
+        href={demoLink || sourceLink}
+      >
+        <h5 className="text-xl font-bold mb-1 hover:text-primary">{title}</h5>
+      </Link>
+      <p
+        className="mb-2"
+        style={{
+          color: 'var(--color-text-secondary)',
+        }}
+      >
+        {description.excerpt}
+      </p>
+      <p className="text-xs tracking-wide">
+        {new Date(publishedDate).getFullYear()}
+      </p>
+    </div>
   );
 };

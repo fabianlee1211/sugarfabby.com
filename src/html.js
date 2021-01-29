@@ -26,6 +26,7 @@ export default function HTML(props) {
                   window.__theme = newTheme;
                   preferredTheme = newTheme;
                   document.documentElement.setAttribute('data-theme', newTheme);
+                  document.documentElement.setAttribute('class', newTheme);
                 }
                 var preferredTheme;
                 try {

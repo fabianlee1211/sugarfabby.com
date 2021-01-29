@@ -1,33 +1,19 @@
 import Container from '@components/elements/Container/Container';
 import SEO from '@components/elements/SEO/SEO';
-import Heading from '@components/elements/Text/Heading';
-import Text from '@components/elements/Text/Text';
 import Footer from '@components/modules/Footer/Footer';
 import BlogSection from '@components/templates/BlogSection/BlogSection';
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledContainer = styled(Container)`
-  > div {
-    padding: 70px 20px 40px;
-    text-align: left;
-    max-width: 1120px;
-  }
-`;
 
 const BlogPage = () => {
   return (
     <>
       <SEO />
-      <StyledContainer>
-        <Heading
-          size="h2"
-          style={{ marginBottom: '10px', color: 'var(--color-primary)' }}
-        >
-          Blog
-        </Heading>
-        <Text>I mostly write about coding, productivity and life.</Text>
-      </StyledContainer>
+      <Container className="pt-24 pb-8 max-w-screen-xl">
+        <h2 className="text-4xl font-bold mb-2 text-primary">Blog</h2>
+        <p className="text-lg">
+          I mostly write about coding, productivity and life.
+        </p>
+      </Container>
       <BlogSection />
       <Footer />
     </>

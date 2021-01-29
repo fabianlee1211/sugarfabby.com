@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const PAGINATION_SIZE = 5;
+const PAGINATION_SIZE = 6;
 
 export const useGroupedPosts = (data) => {
   const [groupedPosts, setGroupedPosts] = useState([]);

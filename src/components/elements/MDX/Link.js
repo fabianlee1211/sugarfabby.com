@@ -1,26 +1,25 @@
 /* eslint-disable react/display-name */
 import React from 'react';
-import styled from 'styled-components';
-
-const Link = styled.a`
-  color: var(--color-primary);
-  font-weight: inherit;
-  font-size: inherit;
-
-  :hover {
-    text-decoration: underline;
-  }
-`;
 
 export default ({ children, ...props }) => {
   // Header anchor links
   if (props.className && props.className.includes('anchor')) {
-    return <Link {...props}>{children}</Link>;
+    return (
+      <a className="text-primary hover:underline" {...props}>
+        {children}
+      </a>
+    );
   }
 
   return (
-    <Link target="_blank" rel="noopener noreferrer" {...props}>
+    <a
+      className="text-primary hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ fontSize: 'inherit' }}
+      {...props}
+    >
       {children}
-    </Link>
+    </a>
   );
 };

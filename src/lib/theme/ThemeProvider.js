@@ -1,10 +1,7 @@
 import useDarkMode from '@hooks/useDarkMode';
-import { theme } from '@lib/theme/theme';
 import React from 'react';
-import {
-  ThemeContext,
-  ThemeProvider as StyledThemeProvider,
-} from 'styled-components';
+
+export const ThemeContext = React.createContext();
 
 export const useTheme = () => {
   const themeContext = React.useContext(ThemeContext);
@@ -14,9 +11,9 @@ export const useTheme = () => {
 const ThemeProvider = (props) => {
   const [mode, toggleTheme] = useDarkMode();
   return (
-    <StyledThemeProvider theme={{ ...theme, mode, toggleTheme }}>
+    <ThemeContext.Provider value={{ mode, toggleTheme }}>
       {props.children}
-    </StyledThemeProvider>
+    </ThemeContext.Provider>
   );
 };
 

@@ -1,23 +1,8 @@
-import Heading from '@components/elements/Text/Heading';
-import Text from '@components/elements/Text/Text';
 import React from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 0 20px;
-  > * {
-    text-align: center;
-  }
-`;
 
 const FourOFour = () => {
   return (
-    <Container>
+    <div className="flex flex-col items-center justify-center h-screen px-5 text-center">
       <svg
         version="1.1"
         id="Capa_1"
@@ -38,11 +23,9 @@ const FourOFour = () => {
           d="M331.378,331.378c-8.533,8.533-22.756,8.533-31.289,0l-72.533-72.533l-72.533,72.533c-8.533,8.533-22.756,8.533-31.289,0 c-8.533-8.533-8.533-22.756,0-31.289l72.533-72.533l-72.533-72.533c-8.533-8.533-8.533-22.756,0-31.289c8.533-8.533,22.756-8.533,31.289,0l72.533,72.533l72.533-72.533 c8.533-8.533,22.756-8.533,31.289,0 c8.533,8.533,8.533,22.756,0,31.289l-72.533,72.533l72.533,72.533C339.911,308.622,339.911,322.844,331.378,331.378z"
         />
       </svg>
-      <Heading size="h3" style={{ marginTop: '15px' }}>
-        Page Not Found
-      </Heading>
-      <Text>Looks like you are on the wrong page...</Text>
-    </Container>
+      <h3 className="text-4xl font-bold m-5">Page Not Found</h3>
+      <p>Looks like you are on the wrong page...</p>
+    </div>
   );
 };
 
