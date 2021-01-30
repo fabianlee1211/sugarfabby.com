@@ -51,7 +51,9 @@ const Navbar = () => {
       animate={inProp ? 'shrink' : 'default'}
       className="fixed top-0 bg-background w-full z-50"
       variants={variants}
-      style={{ boxShadow: inProp ? 'var(--box-shadow)' : 'none' }}
+      style={{
+        boxShadow: inProp ? 'var(--box-shadow)' : 'none',
+      }}
     >
       <Container className="flex justify-between max-w-screen-2xl items-center">
         <Link to="/">

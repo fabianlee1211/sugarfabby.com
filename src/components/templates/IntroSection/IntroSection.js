@@ -20,7 +20,7 @@ const IntroSection = () => {
   const { mode } = useTheme();
   const { author, email, description } = data.site.siteMetadata;
   return (
-    <Container className="pt-24 max-w-screen-xl">
+    <Container className="pt-28 max-w-screen-xl">
       <div className="flex flex-col justify-between items-center md:flex-row">
         <div className="flex items-center flex-col max-w-xs space-y-4 md:items-start">
           <h1 className="text-4xl text-center text-black dark:text-white font-bold md:text-left md:text-5xl">
