@@ -170,3 +170,9 @@ h5 code,
 h6 code {
   font-size: inherit !important;
 }
+
+/* img caption */
+p span + em {
+  text-align: center;
+  @apply text-xs block mt-2 opacity-70;
+}

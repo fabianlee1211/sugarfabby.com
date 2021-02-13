@@ -74,7 +74,11 @@ const BlogSection = () => {
       </div>
       {hasMorePosts && (
         <div className="flex justify-center pt-8">
-          <SecondaryButton alt="Load more posts" onClick={appendPosts}>
+          <SecondaryButton
+            alt="Load more posts"
+            onClick={appendPosts}
+            className="w-28"
+          >
             Load More
           </SecondaryButton>
         </div>

@@ -1,0 +1,57 @@
+---
+slug: 5-react-native-libraries-you-might-have-missed
+title: 5 React Native Libraries You Might Have Missed
+date: '2021-02-01'
+author: Fabian Lee
+description: Hidden gems I've found in the React Native community.
+banner: './images/banner.jpg'
+bannerCredit: CHUTTERSNAP
+bannerLink: https://unsplash.com/photos/Zf64Osndqvc
+category: Coding
+published: true
+keywords:
+  - javascript
+  - react-native
+---
+
+As React Native developers, I think we are all familiar with those essential libraries from react-native-community, as well as other ground-breaking ones like React Navigation and Reanimated.
+
+In fact, there are also smaller contributors out there and their work are worth mentioning. I would like share 5 remarkable libraries that I’ve found and hopefully they would be useful in your project.
+
+### 1. [gorhom/bottom-sheet](https://github.com/gorhom/react-native-bottom-sheet)
+
+This is by far the best bottom sheet library I’ve ever tried. It combined the seamless animation and gestures from [reanimated-bottom-sheet](https://github.com/osdnk/react-native-reanimated-bottom-sheet) and the scrollable feature from [react-native-scroll-bottom-sheet](https://github.com/rgommezz/react-native-scroll-bottom-sheet), into one native-like performance library.
+
+Bottom sheets are mounted through a portal which references the common practice in creating overlay content in web development. The concept is similar to React Portals.
+
+It can also integrate with React Navigation which mimics the iOS native modal stack behavior. The setup is simply wrapping a stack navigator with a bottom sheet. No custom navigator is required. This opens up more creative freedom when implementing a modal stack.
+
+![Demo Video](./images/demo.gif)
+
+The downside would be the annoying keyboard avoiding view issue. There are imperfect hacks around it and the owner is looking to resolve it in v3 which requires Reanimated v2. It would be a walk in the park if you don’t plan to have any input fields inside your bottom sheets.
+
+### 2. [react-native-notifier](https://github.com/seniv/react-native-notifier)
+
+This library reminds me of the in-app notifications of Instagram. I like neat design, not to mention the integration with gesture handler. And it’s also fully customizable.
+
+There’s also a queue mode where you can line up multiple notifications and transition through them.
+
+You can essentially mimic native push notifications. Everyone should find the user experience familiar and intuitive.
+
+### 3. [react-native-render-html](https://github.com/meliorence/react-native-render-html)
+
+This library reminds me of Ionic. The basic idea is that you map HTML tags to their corresponding React Native components. You can even have custom tags and add styles with classes.
+
+The greatest potential I would say it’s to pair it with a back-end service where you can serve HTML templates to your React Native app for rendering. This is particular useful for dynamic content like promotions or disclaimer documents.
+
+### 4. [react-native-haptic-feedback](https://github.com/junina-de/react-native-haptic-feedback)
+
+This library adds a slight touch of user feedback experience. Small interactions like sounds or vibration tends to make us feel “connected” to an app. This idea is profoundly used in the gaming world. It’s not only the sound effects from games but also the vibration on controllers.
+
+iOS seamlessly implemented haptic features in its Eco-system, for example when you use Apply Pay or confirming an app download. Try adding this feature in one of your user journey and bring your app alive.
+
+### 5. [react-native-parsed-text](https://github.com/taskrabbit/react-native-parsed-text)
+
+Creating an inline link to some page, unlike how we can add inline a tags in HTML, requires a great effort in React Native. It was never possible to nest components within text. The problem is even more obvious when your app uses internalization. Sentences could be in different structure depending on the language. You cannot join components and text together in the same way.
+
+This library would be your savior. You can use RegExp or predefined patterns to select individual text. Then you can add styles and handlers to them. For example, you can select URLs and add a handler to open up the browser.

@@ -64,6 +64,12 @@ exports.createPages = ({ graphql, actions }) => {
           return;
         }
 
+        // TODO: Create Category and Tag pages
+        // const allTags = edges.map((e) => e.node.frontmatter.keywords).flat();
+        // const allCategories = edges.map((e) => e.node.frontmatter.category);flat();
+        // const tags = [...new Set(allTags)];
+        // const categories = [...new Set(allCategories)];
+
         createBlogPages({ posts: edges, blogPath: '/blog', actions });
       }),
     );

@@ -14,7 +14,7 @@ export default {
   p: (props) => <p className="mb-8 leading-7" {...props} />,
   a: (props) => <Link {...props} />,
   ul: (props) => <ul className="list-disc pl-4 mb-8" {...props} />,
-  li: (props) => <li className="leading-7 mb-3" {...props} />,
+  li: (props) => <li className="leading-7 mb-3 pl-1" {...props} />,
   ol: (props) => <ol {...props} />,
   inlineCode: (props) => <Code {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
