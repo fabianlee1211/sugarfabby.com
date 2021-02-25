@@ -52,9 +52,7 @@ const SummarySection = () => {
     <Container className="py-10 max-w-screen-xl">
       <div className="grid grid-cols-1 divide-y divide-gray-200 dark:divide-gray-700">
         <div className="flex flex-col space-y-4 py-8">
-          <h5 className="uppercase tracking-widest text-primary">
-            Latest Posts
-          </h5>
+          <p className="uppercase tracking-widest text-primary">Latest Posts</p>
           <div className="grid grid-cols-1 gap-6">
             {posts.map((p) => {
               return (

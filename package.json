@@ -30,7 +30,6 @@
     "gatsby-plugin-robots-txt": "^1.5.1",
     "gatsby-plugin-sharp": "^2.6.43",
     "gatsby-plugin-sitemap": "^2.4.17",
-    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-autolink-headers": "^2.10.0",
     "gatsby-remark-copy-linked-files": "^2.3.13",
     "gatsby-remark-images": "^3.10.0",

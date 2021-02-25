@@ -10,8 +10,8 @@ const customComponents = { Video };
 const Layout = ({ children }) => {
   return (
     <ThemeProvider>
+      <Navbar />
       <main className="flex flex-col min-h-screen">
-        <Navbar />
         <MDXProvider components={{ ...mdxComponents, ...customComponents }}>
           {children}
         </MDXProvider>

@@ -60,22 +60,25 @@ const Navbar = () => {
           <img
             src={logoSrc}
             alt="icon-logo"
-            className="transform transition-all duration-100 ease-out max-w-14 w-10 md:w-12"
+            style={{ maxWidth: '54px' }}
+            className="transform transition-all duration-100 ease-out w-10 md:w-12"
           />
         </Link>
-        <ul className="flex space-x-6">
-          {links.map((l) => (
-            <li key={l.label}>
-              <Link className="text-sm" to={l.to}>
-                {l.label}
-              </Link>
-            </li>
-          ))}
+        <div className="flex">
+          <ul className="flex space-x-6 mr-6">
+            {links.map((l) => (
+              <li key={l.label}>
+                <Link className="text-sm" to={l.to}>
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <NewSwitch
             onChange={(e) => toggleTheme(e.target.checked)}
             checked={mode === 'dark'}
           />
-        </ul>
+        </div>
       </Container>
     </motion.nav>
   );

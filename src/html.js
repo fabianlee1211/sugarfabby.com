@@ -1,9 +1,11 @@
+import avatarDark from '@assets/images/avatar-dark.svg';
+import avatar from '@assets/images/avatar.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function HTML(props) {
   return (
-    <html {...props.htmlAttributes}>
+    <html lang="en" {...props.htmlAttributes}>
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -11,6 +13,13 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Inter:200,300,400,500,600,700&display=swap"
+          media="all"
+        ></link>
+        <link rel="preload" as="image" href={avatar} />
+        <link rel="preload" as="image" href={avatarDark} />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

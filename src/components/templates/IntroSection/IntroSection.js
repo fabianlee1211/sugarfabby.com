@@ -39,6 +39,7 @@ const IntroSection = () => {
           <img
             className="object-fill h-60 w-full"
             src={mode === 'dark' ? avatarDark : avatar}
+            alt="avatar"
           />
         </div>
       </div>

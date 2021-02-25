@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Icon = ({ icon, link, ...props }) => {
+const Icon = ({ icon, link, label, ...props }) => {
   const src = require(`./icons/icon-${icon}.svg`);
   const iconStyle = {
     mask: `url(${src})`,
@@ -10,7 +10,12 @@ const Icon = ({ icon, link, ...props }) => {
   };
   if (link) {
     return (
-      <a href={link} target="_blank" rel="nofollow noopener noreferrer">
+      <a
+        href={link}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        {...(label && { 'aria-label': label })}
+      >
         <span style={iconStyle} {...props} />
       </a>
     );
