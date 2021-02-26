@@ -5,9 +5,9 @@ const useDarkMode = () => {
 
   useLayoutEffect(() => {
     if (typeof window !== 'undefined' && window.__theme) {
-      setMode(mode || window.__theme);
+      setMode(window.__theme);
     }
-  }, [mode]);
+  }, []);
 
   const toggleTheme = (isSwitchOn) => {
     if (isSwitchOn) {
