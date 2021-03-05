@@ -4,7 +4,7 @@ import Link from '@components/elements/MDX/Link';
 import SEO from '@components/elements/SEO/SEO';
 import Footer from '@components/modules/Footer/Footer';
 import { graphql, Link as NavLink } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import 'prism-theme-night-owl';
 import React from 'react';
@@ -29,7 +29,7 @@ const Post = ({ data: { mdx }, pageContext }) => {
     <>
       <SEO
         frontmatter={{ ...frontmatter, slug }}
-        metaImage={banner.childImageSharp.fluid.src}
+        metaImage={getSrc(banner)}
         isBlogPost
       />
       <Container isBlog className="max-w-screen-md pt-24 pb-12">
@@ -51,9 +51,9 @@ const Post = ({ data: { mdx }, pageContext }) => {
           </div>
           {banner && (
             <div className="flex flex-col mb-10">
-              <Img
+              <GatsbyImage
+                image={banner.childImageSharp.gatsbyImageData}
                 className="md:rounded-md -mx-4"
-                fluid={banner.childImageSharp.fluid}
                 alt="post-banner"
               />
               {bannerCredit && (
@@ -140,10 +140,12 @@ export const pageQuery = graphql`
         category
         banner {
           childImageSharp {
-            fluid(maxWidth: 768, quality: 100) {
-              ...GatsbyImageSharpFluid
-              ...GatsbyImageSharpFluidLimitPresentationSize
-            }
+            gatsbyImageData(
+              width: 768
+              quality: 100
+              layout: CONSTRAINED
+              placeholder: BLURRED
+            )
           }
         }
       }

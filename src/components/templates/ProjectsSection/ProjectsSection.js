@@ -17,9 +17,12 @@ const ProjectsSection = () => {
             excerpt: description
           }
           screenshot {
-            fluid(maxWidth: 700) {
-              ...GatsbyContentfulFluid
-            }
+            gatsbyImageData(
+              width: 700
+              aspectRatio: 1.77
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+            )
           }
         }
       }

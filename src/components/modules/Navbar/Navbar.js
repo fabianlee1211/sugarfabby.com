@@ -58,7 +58,7 @@ const Navbar = () => {
       <Container className="flex justify-between max-w-screen-2xl items-center">
         <Link to="/">
           <img
-            src={logoSrc}
+            src={logoSrc.default}
             alt="icon-logo"
             style={{ maxWidth: '54px' }}
             className="transform transition-all duration-100 ease-out w-10 md:w-12"

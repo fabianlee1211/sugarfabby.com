@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Switch.module.css';
+import { baseSwitch, off, on } from './Switch.module.css';
 
 const Switch = ({ onChange, checked }) => {
   return (
@@ -11,9 +11,7 @@ const Switch = ({ onChange, checked }) => {
         id="checkbox"
         aria-label={checked ? `Activate Light Mode` : `Activate Dark Mode`}
         title={checked ? `Activate Light Mode` : `Activate Dark Mode`}
-        className={`${styles.switch} ${
-          checked ? styles.checked : styles.unchecked
-        }`}
+        className={`${baseSwitch} ${checked ? on : off}`}
       />
     </div>
   );

@@ -2,7 +2,7 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from '@components/elements/Button/Button';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 const ProjectCard = ({ project }) => {
@@ -12,16 +12,16 @@ const ProjectCard = ({ project }) => {
     sourceLink,
     techUsed,
     description: { excerpt },
-    screenshot: { fluid },
+    screenshot,
   } = project;
 
   return (
     <div className="flex flex-col bg-background shadow-lg rounded-lg">
-      <Img
+      <GatsbyImage
+        image={getImage(screenshot)}
         className="rounded-t-lg"
         objectFit="cover"
         objectPosition="center"
-        fluid={{ ...fluid, aspectRatio: 16 / 9 }}
         alt={title}
       />
       <div className="flex flex-col p-4 space-y-2">

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Icon = ({ icon, link, label, ...props }) => {
-  const src = require(`./icons/icon-${icon}.svg`);
+  const src = require(`./icons/icon-${icon}.svg`).default;
   const iconStyle = {
     mask: `url(${src})`,
     maskSize: 'cover',

@@ -1,4 +1,4 @@
-.switch {
+.baseSwitch {
   opacity: 0.65;
   position: relative;
   border-radius: 5px;
@@ -16,7 +16,7 @@
   appearance: none;
 }
 
-.checked {
+.on {
   position: relative;
   width: 24px;
   height: 24px;
@@ -29,7 +29,7 @@
   box-shadow: inset 8px -8px 0px 0px var(--color-switch);
 }
 
-.checked::before {
+.on::before {
   right: -9px;
   top: -9px;
   height: 24px;
@@ -40,7 +40,7 @@
   transition: transform 0.45s ease;
 }
 
-.checked::after {
+.on::after {
   width: 8px;
   height: 8px;
   margin: -4px 0 0 -4px;
@@ -54,14 +54,14 @@
   transition: all 0.35s ease;
 }
 
-.checked::before,
-.checked::after {
+.on::before,
+.on::after {
   content: ' ';
   position: absolute;
   border-radius: 50%;
 }
 
-.unchecked {
+.off {
   position: relative;
   width: 24px;
   height: 24px;
@@ -74,7 +74,7 @@
   box-shadow: none;
 }
 
-.unchecked::before {
+.off::before {
   right: -9px;
   top: -9px;
   height: 24px;
@@ -85,7 +85,7 @@
   transition: transform 0.45s ease;
 }
 
-.unchecked::after {
+.off::after {
   width: 8px;
   height: 8px;
   margin: -4px 0 0 -4px;
@@ -99,8 +99,8 @@
   transition: all 0.35s ease;
 }
 
-.unchecked::before,
-.unchecked::after {
+.off::before,
+.off::after {
   content: ' ';
   position: absolute;
   border-radius: 50%;

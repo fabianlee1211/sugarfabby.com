@@ -2,13 +2,13 @@ import { SecondaryButton } from '@components/elements/Button/Button';
 import Container from '@components/elements/Container/Container';
 import { useGroupedPosts } from '@hooks/useGroupedPosts';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { PostItem } from '../SummarySection/SummaryItems';
 
 const BlogSection = () => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       blog: allMdx(
         filter: {
           fileAbsolutePath: { regex: "//content/blog//" }
@@ -29,10 +29,13 @@ const BlogSection = () => {
             category
             banner {
               childImageSharp {
-                fluid(maxWidth: 728, quality: 90) {
-                  ...GatsbyImageSharpFluid
-                  ...GatsbyImageSharpFluidLimitPresentationSize
-                }
+                gatsbyImageData(
+                  width: 728
+                  quality: 90
+                  layout: CONSTRAINED
+                  aspectRatio: 1.77
+                  placeholder: BLURRED
+                )
               }
             }
           }
@@ -52,14 +55,11 @@ const BlogSection = () => {
         {posts.map((p, i) => {
           return (
             <div className="bg-background rounded-lg shadow-xl" key={i}>
-              <Img
+              <GatsbyImage
+                image={getImage(p.frontmatter.banner)}
                 className="rounded-t-lg"
                 objectFit="cover"
                 objectPosition="center"
-                fluid={{
-                  ...p.frontmatter.banner.childImageSharp.fluid,
-                  aspectRatio: 16 / 9,
-                }}
                 alt="post-banner"
               />
               <PostItem
