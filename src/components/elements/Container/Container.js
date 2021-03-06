@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 const defaultStyle = 'container mx-auto px-4 lg:px-24';
 const blogStyle = 'container mx-auto px-4 lg:px-8';

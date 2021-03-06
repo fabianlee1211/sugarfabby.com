@@ -2,12 +2,14 @@ import Container from '@components/elements/Container/Container';
 import Arrow from '@components/elements/Icon/Arrow';
 import Link from '@components/elements/MDX/Link';
 import SEO from '@components/elements/SEO/SEO';
+import Share from '@components/elements/Share/Share';
 import Footer from '@components/modules/Footer/Footer';
 import { graphql, Link as NavLink } from 'gatsby';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import 'prism-theme-night-owl';
-import React from 'react';
+import * as React from 'react';
+import config from '../../../../config';
 
 const Post = ({ data: { mdx }, pageContext }) => {
   const { next, prev } = pageContext;
@@ -23,7 +25,7 @@ const Post = ({ data: { mdx }, pageContext }) => {
     category,
   } = frontmatter;
 
-  const blogPostUrl = `https://sugarfabby.com${slug}`;
+  const blogPostUrl = `${config.siteUrl}${slug}`;
 
   return (
     <>
@@ -66,7 +68,7 @@ const Post = ({ data: { mdx }, pageContext }) => {
           )}
           <MDXRenderer>{body}</MDXRenderer>
 
-          <div className="flex items-end flex-col mt-16 mb-10">
+          <div className="flex items-end flex-col mt-16 mb-5">
             <p className="font-bold">Thanks For Reading</p>
             <div className="mt-1">
               <p className="text-right">
@@ -81,6 +83,15 @@ const Post = ({ data: { mdx }, pageContext }) => {
                 <Link href={editLink}>Edit Post on GitHub</Link>
               </p>
             </div>
+          </div>
+          <div className="flex justify-end border-b border-gray-300 dark:border-gray-800 py-1 mb-10">
+            <Share
+              url={blogPostUrl}
+              title={title}
+              description={description}
+              twitterId={config.twitterId}
+              siteUrl={config.siteUrl}
+            />
           </div>
 
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">

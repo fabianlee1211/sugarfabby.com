@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 const Icon = ({ icon, link, label, ...props }) => {
   const src = require(`./icons/icon-${icon}.svg`).default;

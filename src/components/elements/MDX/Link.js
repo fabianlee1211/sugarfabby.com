@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React from 'react';
+import * as React from 'react';
 
 export default ({ children, ...props }) => {
   // Header anchor links

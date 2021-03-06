@@ -11,8 +11,7 @@
     "start": "yarn develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "build:clean": "rm -rf node_modules && rm -f yarn.lock && yarn",
-    "prepare": "husky install"
+    "build:clean": "rm -rf node_modules && rm -f yarn.lock && yarn"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.18",
@@ -20,7 +19,6 @@
     "autoprefixer": "^10.0.4",
     "framer-motion": "^2.9.5",
     "gatsby": "^3.0.2",
-    "gatsby-image": "^3.0.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-analytics": "^3.0.0",
     "gatsby-plugin-image": "^1.0.0",
@@ -45,6 +43,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-share": "^4.4.0",
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {

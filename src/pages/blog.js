@@ -2,7 +2,7 @@ import Container from '@components/elements/Container/Container';
 import SEO from '@components/elements/SEO/SEO';
 import Footer from '@components/modules/Footer/Footer';
 import BlogSection from '@components/templates/BlogSection/BlogSection';
-import React from 'react';
+import * as React from 'react';
 
 const BlogPage = () => {
   return (

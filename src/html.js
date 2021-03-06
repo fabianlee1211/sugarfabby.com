@@ -1,7 +1,7 @@
 import avatarDark from '@assets/images/avatar-dark.svg';
 import avatar from '@assets/images/avatar.svg';
 import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 
 export default function HTML(props) {
   return (

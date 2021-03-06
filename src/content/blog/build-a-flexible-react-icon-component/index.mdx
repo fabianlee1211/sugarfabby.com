@@ -26,7 +26,7 @@ In your React project, you can choose to install react-icons or meronex-icons. I
 Run `yarn add @meronex/icons` and create a new `Icon` component in your project.
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 
 const Icon = () => {};
 
@@ -48,7 +48,7 @@ I don’t find it practical since we usually want to centralize how components b
 ```jsx
 import * as MaterialDesignIcons from '@meronex/icons/md';
 import * as FontAwesomeIcons from '@meronex/icons/fa';
-import React from 'react';
+import * as React from 'react';
 import { styled } from 'styled-components';
 
 const iconFamilies = {
@@ -112,7 +112,7 @@ Assuming you have a theme and you want to set the color and size, the final vers
 // Version with Styled Components
 import * as MaterialDesignIcons from '@meronex/icons/md';
 import * as FontAwesomeIcons from '@meronex/icons/fa';
-import React from 'react';
+import * as React from 'react';
 import { styled } from 'styled-components';
 
 const iconFamilies = {
@@ -141,7 +141,7 @@ And if you don’t like styled-components, you can simply do this with style obj
 // Version with style object
 import * as MaterialDesignIcons from '@meronex/icons/md';
 import * as FontAwesomeIcons from '@meronex/icons/fa';
-import React from 'react';
+import * as React from 'react';
 
 const iconFamilies = {
   MaterialDesign: MaterialDesignIcons,
@@ -161,7 +161,7 @@ This solution requires us to import icons all at once. If you really care about 
 
 ```jsx
 import { MdAlarm, MdDelete, ... } from '@meronex/icons/md';
-import React from 'react';
+import * as React from 'react';
 
 const iconFamilies = {
   MaterialDesign: {

@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React from 'react';
+import * as React from 'react';
 import Blockquote from './Blockquote';
 import Code from './Code';
 import Link from './Link';

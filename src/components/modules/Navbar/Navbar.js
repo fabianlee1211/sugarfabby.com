@@ -4,7 +4,7 @@ import { useTheme } from '@lib/theme/ThemeProvider';
 import debounce from '@lib/utils/debounce';
 import { motion, useViewportScroll } from 'framer-motion';
 import { Link } from 'gatsby';
-import React from 'react';
+import * as React from 'react';
 
 const logoSrc = require(`@components/elements/Icon/icons/icon-logo.svg`);
 

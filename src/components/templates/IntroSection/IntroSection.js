@@ -3,7 +3,7 @@ import avatar from '@assets/images/avatar.svg';
 import Container from '@components/elements/Container/Container';
 import { useTheme } from '@lib/theme/ThemeProvider';
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
+import * as React from 'react';
 
 const IntroSection = () => {
   const data = useStaticQuery(graphql`

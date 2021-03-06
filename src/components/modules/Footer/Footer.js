@@ -1,7 +1,7 @@
 import Container from '@components/elements/Container/Container';
 import Icon from '@components/elements/Icon/Icon';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import React from 'react';
+import * as React from 'react';
 
 const year = new Date().getFullYear();
 

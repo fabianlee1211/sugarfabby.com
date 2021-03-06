@@ -81,7 +81,7 @@ First, create a `FlagsContext` and get the `remoteConfig` instance. Since all th
 Our provider component should take in a `defaults` prop for setting the default values of your feature flags. We'll save them in a `flags` state and pass it to our Provider below, so we can trigger a re-render when we set new flags.
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 import semverSatisfies from 'semver/functions/satisfies';
 import { firebase } from './firebase';
 
@@ -153,7 +153,7 @@ Here's where `semver` helps us determine the boolean state of a flag. The `semve
 #### 4. Wrap your App with FlagsProvider
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 import FlagsProvider from '...';
 
 const App = () => {

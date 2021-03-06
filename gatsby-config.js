@@ -1,3 +1,4 @@
+const config = require('./config');
 const {
   NODE_ENV,
   URL: NETLIFY_SITE_URL = 'https://sugarfabby.com/',
@@ -9,25 +10,24 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 module.exports = {
   siteMetadata: {
-    title: 'Fabian Lee | Software Engineer from Hong Kong',
-    author: 'Fabian Lee',
-    email: 'chleefabian@gmail.com',
-    description:
-      'Full Stack Software Engineer from Hong Kong with focus on Front-end Development and Human-centered Design.',
+    title: config.siteTitle,
+    author: config.author,
+    email: config.email,
+    description: config.siteDescription,
     siteUrl,
     socialMedia: [
-      { link: 'https://github.com/fabianlee1211', platform: 'github' },
+      { link: config.github, platform: 'github' },
       {
-        link: 'https://www.linkedin.com/in/fabiannnlee/',
+        link: config.linkedin,
         platform: 'linkedin',
       },
       {
-        link: 'https://twitter.com/fabiannnlee',
+        link: config.twitter,
         platform: 'twitter',
-        id: '@fabiannnlee',
+        id: config.twitterId,
       },
-      { link: 'https://www.behance.net/fabianlee', platform: 'behance' },
-      { link: 'https://medium.com/@fabianlee', platform: 'medium' },
+      { link: config.behance, platform: 'behance' },
+      { link: config.medium, platform: 'medium' },
     ],
   },
   plugins: [

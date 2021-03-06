@@ -1,5 +1,5 @@
 import { cleanStyles } from '@lib/utils/utils';
-import React from 'react';
+import * as React from 'react';
 
 const baseStyle = 'rounded-md text-sm p-2';
 

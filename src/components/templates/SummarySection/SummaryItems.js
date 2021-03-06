@@ -1,6 +1,6 @@
 import Link from '@components/elements/MDX/Link';
 import { Link as NavLink } from 'gatsby';
-import React from 'react';
+import * as React from 'react';
 
 export const PostItem = ({
   category,

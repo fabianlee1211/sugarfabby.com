@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { baseSwitch, off, on } from './Switch.module.css';
 
 const Switch = ({ onChange, checked }) => {

@@ -2,7 +2,7 @@ import Container from '@components/elements/Container/Container';
 import SEO from '@components/elements/SEO/SEO';
 import Footer from '@components/modules/Footer/Footer';
 import ProjectsSection from '@components/templates/ProjectsSection/ProjectsSection';
-import React from 'react';
+import * as React from 'react';
 
 const ProjectsPage = () => {
   return (

@@ -3,7 +3,7 @@ import {
   SecondaryButton,
 } from '@components/elements/Button/Button';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React from 'react';
+import * as React from 'react';
 
 const ProjectCard = ({ project }) => {
   const {

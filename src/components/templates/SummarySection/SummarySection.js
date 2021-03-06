@@ -1,6 +1,6 @@
 import Container from '@components/elements/Container/Container';
 import { graphql, Link as NavLink, useStaticQuery } from 'gatsby';
-import React from 'react';
+import * as React from 'react';
 import { PostItem, ProjectItem } from './SummaryItems';
 
 const SummarySection = () => {
@@ -50,7 +50,7 @@ const SummarySection = () => {
 
   return (
     <Container className="py-10 max-w-screen-xl">
-      <div className="grid grid-cols-1 divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="grid grid-cols-1 divide-y divide-gray-300 dark:divide-gray-800">
         <div className="flex flex-col space-y-4 py-8">
           <p className="uppercase tracking-widest text-primary">Latest Posts</p>
           <div className="grid grid-cols-1 gap-6">

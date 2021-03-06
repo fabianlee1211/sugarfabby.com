@@ -3,7 +3,7 @@ import Container from '@components/elements/Container/Container';
 import { useGroupedPosts } from '@hooks/useGroupedPosts';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React from 'react';
+import * as React from 'react';
 import { PostItem } from '../SummarySection/SummaryItems';
 
 const BlogSection = () => {

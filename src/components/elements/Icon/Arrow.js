@@ -1,6 +1,6 @@
 import arrow from '@assets/images/next.svg';
 import { cleanStyles } from '@lib/utils/utils';
-import React from 'react';
+import * as React from 'react';
 
 const baseStyle = 'w-5 h-5 block bg-black dark:bg-white';
 const leftStyle = 'transform rotate-180 mr-2';
