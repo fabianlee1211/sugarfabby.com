@@ -1,10 +1,34 @@
 import { SecondaryButton } from '@components/elements/Button/Button';
 import Container from '@components/elements/Container/Container';
-import { useGroupedPosts } from '@hooks/useGroupedPosts';
+import BlogCard from '@components/modules/BlogCard/BlogCard';
+import { useGroupItems } from '@hooks/useGroupItems';
+import { AnimateSharedLayout, motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import * as React from 'react';
-import { PostItem } from '../SummarySection/SummaryItems';
+
+const container = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.1,
+    },
+  }),
+};
+
+const PAGINATION_SIZE = 6;
 
 const BlogSection = () => {
   const data = useStaticQuery(graphql`
@@ -44,35 +68,46 @@ const BlogSection = () => {
     }
   `);
 
-  const { posts, appendPosts, hasMorePosts } = useGroupedPosts(data.blog.nodes);
+  const {
+    items: posts,
+    appendItems: appendPosts,
+    hasMoreItems,
+  } = useGroupItems(data.blog.nodes, PAGINATION_SIZE);
 
   return (
     <Container
       outerClassName="bg-background-dark"
       className="max-w-screen-xl py-10"
     >
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((p, i) => {
-          return (
-            <div className="bg-background rounded-lg shadow-xl" key={i}>
-              <GatsbyImage
-                image={getImage(p.frontmatter.banner)}
-                className="rounded-t-lg"
-                objectFit="cover"
-                objectPosition="center"
-                alt="post-banner"
-              />
-              <PostItem
-                {...p.frontmatter}
-                link={p.fields.slug}
-                timeToRead={p.timeToRead}
-                className="p-4"
-              />
-            </div>
-          );
-        })}
-      </div>
-      {hasMorePosts && (
+      <AnimateSharedLayout>
+        <motion.ul
+          className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          layout
+        >
+          {posts.map((p, i) => {
+            return (
+              <motion.li
+                key={p.id}
+                custom={i % PAGINATION_SIZE}
+                layoutId={p.id}
+                variants={item}
+              >
+                <BlogCard
+                  blog={p.frontmatter}
+                  link={p.fields.slug}
+                  timeToRead={p.timeToRead}
+                  className="p-4"
+                />
+              </motion.li>
+            );
+          })}
+        </motion.ul>
+      </AnimateSharedLayout>
+
+      {hasMoreItems && (
         <div className="flex justify-center pt-8">
           <SecondaryButton
             alt="Load more posts"

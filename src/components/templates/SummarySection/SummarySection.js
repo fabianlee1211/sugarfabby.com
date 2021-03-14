@@ -12,6 +12,7 @@ const SummarySection = () => {
           frontmatter: { published: { eq: true } }
         }
         sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 3
       ) {
         nodes {
           id
@@ -29,6 +30,7 @@ const SummarySection = () => {
       }
       projects: allContentfulProject(
         sort: { fields: publishedDate, order: DESC }
+        limit: 3
       ) {
         totalCount
         nodes {
@@ -45,8 +47,8 @@ const SummarySection = () => {
     }
   `);
 
-  const posts = data.blog.nodes.slice(0, 3);
-  const projects = data.projects.nodes.slice(0, 3);
+  const posts = data.blog.nodes;
+  const projects = data.projects.nodes;
 
   return (
     <Container className="py-10 max-w-screen-xl">

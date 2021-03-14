@@ -96,7 +96,7 @@ const Post = ({ data: { mdx }, pageContext }) => {
 
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
             {prev && (
-              <div className="flex flex-col bg-background-dark p-6 rounded-lg">
+              <div className="flex flex-col bg-background-dark p-6 rounded-lg col-start-1">
                 <div className="flex items-center">
                   <Arrow type="left" />
                   <p>Previous</p>
@@ -110,7 +110,7 @@ const Post = ({ data: { mdx }, pageContext }) => {
               </div>
             )}
             {next && (
-              <div className="flex flex-col bg-background-dark p-6 rounded-lg">
+              <div className="flex flex-col bg-background-dark p-6 rounded-lg col-start-2">
                 <div className="flex items-center self-end">
                   <p>Next</p>
                   <Arrow />

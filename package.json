@@ -17,7 +17,7 @@
     "@mdx-js/mdx": "^1.6.18",
     "@mdx-js/react": "^1.6.18",
     "autoprefixer": "^10.0.4",
-    "framer-motion": "^2.9.5",
+    "framer-motion": "^3.10.3",
     "gatsby": "^3.0.2",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-analytics": "^3.0.0",

@@ -12,7 +12,7 @@ export const PostItem = ({
   ...props
 }) => {
   return (
-    <div {...props}>
+    <div className={props.className}>
       <div className="flex flex-col">
         {category && (
           <p className="text-xs font-medium px-3 leading-relaxed rounded-full text-primary bg-blue-500 bg-opacity-20 w-max mb-2">
