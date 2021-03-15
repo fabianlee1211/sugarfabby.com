@@ -34,7 +34,7 @@ const Post = ({ data: { mdx }, pageContext }) => {
         metaImage={getSrc(banner)}
         isBlogPost
       />
-      <Container isBlog className="max-w-screen-md pt-24 pb-12">
+      <Container isBlog className="max-w-screen-md pt-12 pb-12">
         <article>
           <div className="flex flex-col mb-10">
             <div className="flex items-center space-x-2">

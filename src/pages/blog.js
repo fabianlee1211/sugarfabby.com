@@ -8,7 +8,7 @@ const BlogPage = () => {
   return (
     <>
       <SEO />
-      <Container className="pt-24 pb-8 max-w-screen-xl">
+      <Container className="pt-12 pb-8 max-w-screen-xl">
         <h2 className="text-4xl font-bold mb-2 text-primary">Blog</h2>
         <p className="text-lg">
           I mostly write about coding, productivity and life.
